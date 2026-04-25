@@ -230,7 +230,7 @@ def main():
 
     # Clap only (no shh)
     audio_detector = AudioDetector(
-        spike_thresh=0.08, spike_ratio=10.0,
+        spike_thresh=0.0218, spike_ratio=6.2,
         shh_thresh=999.0,          # effectively disabled
         shh_min_duration=999.0,    # effectively disabled
         clap_cooldown=0.6,
