@@ -1,9 +1,9 @@
-# 🎮 Simon Says — Physical Gesture Game
+#  Simon Says Game
 
-> Built for funsies — a fun project for the showcase 🎉
+> Built for funsies, a fun project for the showcase 🎉
 
 A real-time Simon Says game you play with your **body**, not your keyboard.
-Wave your hand, clap loud, or say "meow" — Simon is watching.
+Wave your hand, clap loud, or say "meow", Simon is watching.
 
 ---
 
@@ -177,14 +177,6 @@ SIMON_SAYS_PROBABILITY  = 0.80   # 80% real, 20% traps
 - Vosk small model occasionally mishears background noise as "meow" — say it clearly and it works great
 - Wave detection needs decent lighting for MediaPipe to track the hand
 - MacBook Air mic is sensitive — run the calibration script if clap isn't triggering
-
----
-
-## 👩‍💻 Made By
-
-Built by **Nandinee** — for funsies, and because normal portfolio projects are boring.
-
-> *"Why build a CRUD app when you can make your laptop judge you for not meowing loud enough?"*
 
 ---
 
