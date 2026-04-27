@@ -23,6 +23,7 @@ def _rms(signal):
 class AudioDetector:
     def __init__(
         self,
+        device_index      = 1,
         sample_rate       = 44100,
         chunk_size        = 1024,
         spike_thresh      = 0.08,   # raised: was 0.03 — stops false triggers
@@ -42,6 +43,7 @@ class AudioDetector:
         self.shh_min_duration = shh_min_duration
         self.clap_cooldown    = clap_cooldown
         self.shh_cooldown     = shh_cooldown
+        self.device_index     = device_index
 
         self._sos = _make_bandpass(shh_band[0], shh_band[1], sample_rate)
 

@@ -230,7 +230,8 @@ def main():
 
     # Clap only (no shh)
     audio_detector = AudioDetector(
-        spike_thresh=0.0218, spike_ratio=6.2,
+        device_index=1,
+        spike_thresh=0.05, spike_ratio=3.0,
         shh_thresh=999.0,          # effectively disabled
         shh_min_duration=999.0,    # effectively disabled
         clap_cooldown=0.6,
@@ -243,7 +244,7 @@ def main():
         print(f"  {RE}❌  Microphone: {e}{RS}"); sys.exit(1)
 
     # Meow
-    speech_detector = SpeechDetector(cooldown=1.5, target_word="meow")
+    speech_detector = SpeechDetector(cooldown=1.5, target_word="meow", device_index=1)
     try:
         speech_detector.start()
         print(f"  {GR}✅  Speech ready (meow){RS}")
@@ -295,7 +296,7 @@ def main():
 
         # ── Flash timers ───────────────────────────────────────────────
         if gesture_result["wave"]: wave_flash_until = now + 0.6
-        if audio_result["clap"]:   clap_flash_until = now + 0.6
+        if audio_result["clap"] or speech_result.get("clap"): clap_flash_until = now + 0.6
         if speech_result["meow"]:  meow_flash_until = now + 0.6
 
         wave_active   = now < wave_flash_until
@@ -304,7 +305,7 @@ def main():
 
         # ── Submit to game ─────────────────────────────────────────────
         if gesture_result["wave"]: game.submit_action(ACTION_WAVE)
-        if audio_result["clap"]:   game.submit_action(ACTION_CLAP)
+        if audio_result["clap"] or speech_result.get("clap"): game.submit_action(ACTION_CLAP)
         if speech_result["meow"]:  game.submit_action(ACTION_MEOW)
 
         # ── Keyboard fallback ──────────────────────────────────────────
